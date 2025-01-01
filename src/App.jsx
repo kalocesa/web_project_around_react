@@ -1,22 +1,56 @@
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
-import Popup from "./components/Main/Popup/Popup";
+import avatar from "./images/avatar.jpg";
+import avatarEdit from "./images/pencil.svg";
+import profileButton from "./images/editButton.svg";
+import addButton from "./images/addButton.svg";
 
-import closeButton from "./images/closeIcon.svg";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <>
       <div className="page">
         <Header />
-        <Main />
+        <main className="content">
+          <section className="profile">
+            <div className="profile__content-avatar">
+              <img
+                id="image-avatar"
+                src={avatar}
+                alt="avatar"
+                className="profile__avatar"
+              />
+              <div className="profile__content-edit_profile">
+                <img
+                  id="image-avatar-edit"
+                  src={avatarEdit}
+                  alt="avatar-edit"
+                  className="profile__avatar-edit"
+                />
+              </div>
+            </div>
+            <div className="profile__content-edit">
+              <h1 className="profile__name">Katia Sandoval</h1>
+              <img
+                id="image-editButton"
+                src={profileButton}
+                alt="botón para editar el perfil"
+                className="profile__button-edit"
+              />
+              <p className="profile__explorer">Exploradora</p>
+            </div>
+            <div className="profile__content-add">
+              <img
+                id="image-addButton"
+                src={addButton}
+                alt="botón para añadir lugares"
+                className="profile__button-add"
+              />
+            </div>
+          </section>
+          <section className="elements"></section>
+        </main>
         <Footer />
-        <Popup title="Editar Perfil"></Popup>
-        <Popup title="Crear nueva carta"></Popup>
-        <Popup title="Abrir carta con foto y titulo"></Popup>
-        <Popup title="Eliminar una carta"></Popup>
-        <Popup title="Cambiar avatar"></Popup>
       </div>
 
       <template className="template">

@@ -1,6 +1,6 @@
 const EditAvatar = () => {
   return (
-    <form name="add" class="popup__form" novalidate>
+    <form name="add" class="popup__form" noValidate>
       <input
         type="url"
         required

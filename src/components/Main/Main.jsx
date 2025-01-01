@@ -1,50 +1,37 @@
-import avatar from "../../images/avatar.jpg";
-import avatarEdit from "../../images/pencil.svg";
-import profileButton from "../../images/editButton.svg";
-import addButton from "../../images/addButton.svg";
+import Popup from "./Popup/Popup";
+import EditProfile from "./form/EditProfile/EditProfile";
+import NewCard from "./form/NewCard/NewCard";
+import CardOpen from "./form/CardOpen/CardOpen";
+import CardDelete from "./form/CardDelete/CardDelete";
+import EditAvatar from "./form/EditAvatar/EditAvatar";
+
 
 const Main = () => {
-  return (
-    <main className="content">
-      <section className="profile">
-        <div className="profile__content-avatar">
-          <img
-            id="image-avatar"
-            src={avatar}
-            alt="avatar"
-            className="profile__avatar"
-          />
-          <div className="profile__content-edit_profile">
-            <img
-              id="image-avatar-edit"
-              src={avatarEdit}
-              alt="avatar-edit"
-              className="profile__avatar-edit"
-            />
-          </div>
-        </div>
-        <div className="profile__content-edit">
-          <h1 className="profile__name">Katia Sandoval</h1>
-          <img
-            id="image-editButton"
-            src={profileButton}
-            alt="botón para editar el perfil"
-            className="profile__button-edit"
-          />
-          <p className="profile__explorer">Exploradora</p>
-        </div>
-        <div className="profile__content-add">
-          <img
-            id="image-addButton"
-            src={addButton}
-            alt="botón para añadir lugares"
-            className="profile__button-add"
-          />
-        </div>
-      </section>
-      <section className="elements"></section>
-    </main>
-  );
+  const [popupEdit, setPopupEdit] = useState(false);
+  const [popupAdd, setPopupAdd] = useState(false);
+  const [popupCardOpen, setPopupCardOpen] = useState(false);
+  const [popupCardDelete, setPopupCardDelete] = useState(false);
+  const [popupAvatar, setPopupAvatar] = useState(false);
+  
+  {popupEdit && (
+    <Popup title="Editar Perfil">
+            <EditProfile />
+          </Popup>
+          
+  )}
+  <Popup title="Crear nueva carta">
+            <NewCard />
+          </Popup>
+          <Popup title="Abrir carta con foto y titulo">
+            <CardOpen />
+          </Popup>
+          <Popup title="Eliminar una carta">
+            <CardDelete />
+          </Popup>
+          <Popup title="Cambiar avatar">
+            <EditAvatar />
+          </Popup>
 };
+
 
 export default Main;

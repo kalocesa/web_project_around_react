@@ -4,13 +4,13 @@ const EditProfile = () => {
       name="profile"
       class="popup__form popup__form-profile"
       id="profile_form"
-      novalidate
+      noValidate
     >
       <input
         type="text"
         required
-        minlength="2"
-        maxlength="40"
+        minLength="2"
+        maxLength="40"
         class="popup__input popup__input_name"
         id="name"
         name="name"
@@ -20,8 +20,8 @@ const EditProfile = () => {
       <input
         type="text"
         required
-        minlength="2"
-        maxlength="200"
+        minLength="2"
+        maxLength="200"
         class="popup__input popup__input_aboutme"
         id="aboutme"
         name="description"

@@ -1,11 +1,11 @@
-const Newcard = () => {
+const NewCard = () => {
   return (
-    <form name="add" class="popup__form" novalidate>
+    <form name="add" class="popup__form" noValidate>
       <input
         type="text"
         required
-        minlength="2"
-        maxlength="30"
+        minLength="2"
+        maxLength="30"
         class="popup__input popup__input_title"
         id="title"
         name="title"
