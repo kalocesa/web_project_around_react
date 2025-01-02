@@ -14,7 +14,7 @@ const Card = (props) => {
         src={link}
         alt=""
         className="element__image"
-        onClick={() => handleOpenPopup(imageComponent)}
+        onClick={() => props.handleOpenPopup(imageComponent)}
       />
       <div className="element__group">
         <p className="element__text">{name}</p>

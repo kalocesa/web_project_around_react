@@ -1,18 +1,19 @@
 const ImagePopup = (props) => {
-  const { name, link } = props.card;
+  const { name, link } = props;
+  console.log(link);
 
   return (
-    <form name="open" class="popup__form" noValidate>
-      <button class="popup__close">
+    <form name="open" className="popup__form" noValidate>
+      <button className="popup__close">
         <img
           id="image-closeIcon"
-          src={link}
+          src=""
           alt=""
-          class="popup__button-close"
+          className="popup__button-close"
         />
       </button>
-      <img src="" alt="" class="popup__image" />
-      <p class="popup__text">{name}</p>
+      <img src={link} alt="" className="popup__image" />
+      <p className="popup__text">{name}</p>
     </form>
   );
 };

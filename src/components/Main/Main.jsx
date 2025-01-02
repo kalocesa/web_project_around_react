@@ -92,14 +92,14 @@ const Main = () => {
             id="image-addButton"
             src={addButton}
             alt="botón para añadir lugares"
-            className="profile__button-add"
+            className="profile__add-button"
             onClick={() => handleOpenPopup(newCardPopup)}
           />
         </div>
       </section>
       <section className="elements">
         {cards.map((card) => (
-          <Card key={card._id} card={card} />
+          <Card key={card._id} card={card} handleOpenPopup={handleOpenPopup} />
         ))}
       </section>
 
