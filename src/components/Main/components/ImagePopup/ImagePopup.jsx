@@ -1,5 +1,5 @@
 const ImagePopup = (props) => {
-  const { name, link } = props;
+  const { name, link } = props.card;
 
   return (
     <form name="open" class="popup__form" noValidate>
