@@ -7,6 +7,10 @@ const Card = (props) => {
     children: <ImagePopup name={name} link={link} />,
   };
 
+  const cardLikeButtonClassName = `element__like ${
+    isLiked ? "element__button-like" : ""
+  }`;
+
   return (
     <div className="element">
       <button id="button-trash" className="element__button-trash"></button>
@@ -18,9 +22,11 @@ const Card = (props) => {
       />
       <div className="element__group">
         <p className="element__text">{name}</p>
-        <button id="button-like" className="element__like element__button-like">
-          {isLiked}
-        </button>
+        <button
+          id="button-like"
+          type="button"
+          className={cardLikeButtonClassName}
+        ></button>
         <span className="element__like-counter">0</span>
       </div>
     </div>
