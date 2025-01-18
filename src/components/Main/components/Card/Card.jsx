@@ -8,12 +8,17 @@ const Card = (props) => {
   };
 
   const cardLikeButtonClassName = `element__like ${
-    isLiked ? "element__button-like" : ""
+    isLiked ? "element__button-like" : "element__button-dislike"
   }`;
 
   return (
     <div className="element">
-      <button id="button-trash" className="element__button-trash"></button>
+      <button
+        id="button-trash"
+        type="button"
+        className="element__button-trash"
+        onClick={() => props.handleCardDelete(props.card)}
+      ></button>
       <img
         src={link}
         alt=""
@@ -26,6 +31,7 @@ const Card = (props) => {
           id="button-like"
           type="button"
           className={cardLikeButtonClassName}
+          onClick={() => props.handleLikeClick(props.card)}
         ></button>
         <span className="element__like-counter">0</span>
       </div>

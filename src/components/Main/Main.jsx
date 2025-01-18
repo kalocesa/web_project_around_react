@@ -8,7 +8,6 @@ import EditAvatar from "./form/EditAvatar/EditAvatar";
 import EditProfile from "./form/EditProfile/EditProfile";
 import Card from "./components/Card/Card";
 import { api } from "../../utils/api";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useState, useEffect } from "react";
 
 const Main = () => {
@@ -16,9 +15,25 @@ const Main = () => {
   const [cards, setCards] = useState([]);
   const [popup, setPopup] = useState(null);
 
+  const handleCreateCard = (title, link) => {
+    console.log("title", title);
+    console.log("link", link);
+    api.addCards({ name: title, link }).then((response) => {
+      setCards((state) => [response, ...state]);
+      setPopup(null);
+    });
+  };
+
+  const handleChangeAvatar = (avatar) => {
+    api.avatarProfile(avatar).then((response) => {
+      setCurrentUser(response);
+      setPopup(null);
+    });
+  };
+
   const newCardPopup = {
     title: "Nuevo lugar",
-    children: <NewCard />,
+    children: <NewCard handleCreateCard={handleCreateCard} />,
   };
   const editProfilePopup = {
     title: "Editar perfil",
@@ -26,7 +41,7 @@ const Main = () => {
   };
   const editAvatarPopup = {
     title: "Cambiar foto de perfil",
-    children: <EditAvatar />,
+    children: <EditAvatar handleChangeAvatar={handleChangeAvatar} />,
   };
 
   function handleOpenPopup(popup) {
@@ -37,19 +52,26 @@ const Main = () => {
     setPopup(null);
   }
 
-  function handleLikeClick() {
-    onCardLike(card);
-  }
-
   async function handleCardLike(card) {
     const isLiked = card.isLiked;
     await api
-      .likeCard(card._id, !isLiked)
+      .likeCard(card._id, isLiked)
       .then((newCard) => {
         setCards((state) =>
           state.map((currentCard) =>
             currentCard._id === card._id ? newCard : currentCard
           )
+        );
+      })
+      .catch((error) => console.error(error));
+  }
+
+  async function handleCardDelete(card) {
+    await api
+      .deleteCard(card._id)
+      .then((deletedCard) => {
+        setCards((state) =>
+          state.filter((currentCard) => currentCard._id !== deletedCard._id)
         );
       })
       .catch((error) => console.error(error));
@@ -113,11 +135,11 @@ const Main = () => {
             key={card._id}
             card={card}
             handleOpenPopup={handleOpenPopup}
-            onCardLike={handleCardLike}
+            handleLikeClick={handleCardLike}
+            handleCardDelete={handleCardDelete}
           />
         ))}
       </section>
-
       {popup && (
         <Popup onClose={handleClosePopup} title={popup.title}>
           {popup.children}
