@@ -3,12 +3,30 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import CurrentUserContext from "./contexts/CurrentUserContext";
 import { useState, useEffect } from "react";
+import { api } from "./utils/api";
 
 function App() {
-  const { currentUser } = useState(CurrentUserContext);
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+    (async () => {
+      await api.getProfileInfo().then((data) => {
+        setCurrentUser(data);
+      });
+    })();
+  }, []);
+
+  const handleUpdateUser = (data) => {
+    (async () => {
+      await api.editProfile(data.name, data.about).then((newData) => {
+        setCurrentUser(newData);
+      });
+    })();
+  };
+
   return (
     <>
-      <CurrentUserContext.Provider value={currentUser}>
+      <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser }}>
         <div className="page">
           <Header />
           <Main />
