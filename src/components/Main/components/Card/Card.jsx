@@ -1,10 +1,16 @@
 import ImagePopup from "../ImagePopup/ImagePopup";
+import DeleteCard from "../../form/DeleteCard/DeleteCard";
 
 const Card = (props) => {
   const { name, link, isLiked } = props.card;
 
   const imageComponent = {
     children: <ImagePopup name={name} link={link} />,
+  };
+
+  const deleteCardPopup = {
+    title: "¿Estás seguro?",
+    children: <DeleteCard />,
   };
 
   const cardLikeButtonClassName = `element__like ${
@@ -17,7 +23,7 @@ const Card = (props) => {
         id="button-trash"
         type="button"
         className="element__button-trash"
-        onClick={() => props.handleCardDelete(props.card)}
+        onClick={() => props.handleCardDelete(deleteCardPopup)}
       ></button>
       <img
         src={link}

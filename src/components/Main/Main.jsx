@@ -1,4 +1,3 @@
-import avatar from "../../images/avatar.jpg";
 import avatarEdit from "../../images/pencil.svg";
 import profileButton from "../../images/editButton.svg";
 import addButton from "../../images/addButton.svg";
