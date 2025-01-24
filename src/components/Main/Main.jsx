@@ -8,6 +8,7 @@ import EditProfile from "./form/EditProfile/EditProfile";
 import Card from "./components/Card/Card";
 import { api } from "../../utils/api";
 import { useState, useEffect } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const Main = () => {
   const [currentUser, setCurrentUser] = useState({});
