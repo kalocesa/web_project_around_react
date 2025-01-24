@@ -1,6 +1,8 @@
-const DeleteCard = () => {
+const DeleteCard = (props) => {
+  const { handleDeleteCard, card } = props;
   const handleSubmitForm = (evt) => {
     evt.preventDefault();
+    handleDeleteCard(card);
   };
 
   return (

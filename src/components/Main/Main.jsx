@@ -68,9 +68,10 @@ const Main = () => {
   async function handleCardDelete(card) {
     await api
       .deleteCard(card._id)
-      .then((deletedCard) => {
+      .then(() => {
+        handleClosePopup();
         setCards((state) =>
-          state.filter((currentCard) => currentCard._id !== deletedCard._id)
+          state.filter((currentCard) => currentCard._id !== card._id)
         );
       })
       .catch((error) => console.error(error));

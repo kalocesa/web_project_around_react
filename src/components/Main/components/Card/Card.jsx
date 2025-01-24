@@ -10,7 +10,9 @@ const Card = (props) => {
 
   const deleteCardPopup = {
     title: "¿Estás seguro?",
-    children: <DeleteCard />,
+    children: (
+      <DeleteCard handleDeleteCard={props.handleCardDelete} card={props.card} />
+    ),
   };
 
   const cardLikeButtonClassName = `element__like ${
@@ -23,7 +25,7 @@ const Card = (props) => {
         id="button-trash"
         type="button"
         className="element__button-trash"
-        onClick={() => props.handleCardDelete(deleteCardPopup)}
+        onClick={() => props.handleOpenPopup(deleteCardPopup)}
       ></button>
       <img
         src={link}
