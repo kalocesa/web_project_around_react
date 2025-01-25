@@ -9,19 +9,15 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
-    (async () => {
-      await api.getProfileInfo().then((data) => {
-        setCurrentUser(data);
-      });
-    })();
+    api.getProfileInfo().then((data) => {
+      setCurrentUser(data);
+    });
   }, []);
 
   const handleUpdateUser = (data) => {
-    (async () => {
-      await api.editProfile(data.name, data.about).then((newData) => {
-        setCurrentUser(newData);
-      });
-    })();
+    api.editProfile(data.name, data.about).then((newData) => {
+      setCurrentUser(newData);
+    });
   };
 
   return (

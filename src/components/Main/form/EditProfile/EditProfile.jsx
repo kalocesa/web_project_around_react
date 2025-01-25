@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import CurrentUserContext from "../../../../contexts/CurrentUserContext";
 
-const EditProfile = () => {
+const EditProfile = ({ closePopup }) => {
   const userContext = useContext(CurrentUserContext);
   const { currentUser, handleUpdateUser } = userContext;
 
@@ -15,9 +15,11 @@ const EditProfile = () => {
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     handleUpdateUser({ name, about: description });
+    closePopup();
   };
 
   return (

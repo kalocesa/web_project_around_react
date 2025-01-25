@@ -8,7 +8,7 @@ import EditProfile from "./form/EditProfile/EditProfile";
 import Card from "./components/Card/Card";
 import { api } from "../../utils/api";
 import { useState, useEffect } from "react";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+//import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const Main = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -16,8 +16,6 @@ const Main = () => {
   const [popup, setPopup] = useState(null);
 
   const handleCreateCard = (title, link) => {
-    console.log("title", title);
-    console.log("link", link);
     api.addCards({ name: title, link }).then((response) => {
       setCards((state) => [response, ...state]);
       setPopup(null);
@@ -37,7 +35,7 @@ const Main = () => {
   };
   const editProfilePopup = {
     title: "Editar perfil",
-    children: <EditProfile />,
+    children: <EditProfile closePopup={handleClosePopup} />,
   };
   const editAvatarPopup = {
     title: "Cambiar foto de perfil",
