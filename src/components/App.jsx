@@ -16,13 +16,16 @@ function App() {
 
   const handleUpdateUser = (data) => {
     api.editProfile(data.name, data.about).then((newData) => {
+      console.log(newData);
       setCurrentUser(newData);
     });
   };
 
   return (
     <>
-      <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser }}>
+      <CurrentUserContext.Provider
+        value={{ currentUser, handleUpdateUser, setCurrentUser }}
+      >
         <div className="page">
           <Header />
           <Main />
